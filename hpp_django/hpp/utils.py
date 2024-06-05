@@ -31,4 +31,4 @@ def get_predicted_price(location, sqft, bhk, bath):
 
     model = load_model()
 
-    return model.predict([x])[0]
+    return round(model.predict([x])[0], 2)

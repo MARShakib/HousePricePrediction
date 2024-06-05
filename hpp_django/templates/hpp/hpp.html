@@ -1,0 +1,97 @@
+{% extends 'hpp/base.html' %}
+
+{% block content %}
+<form action="{% url 'hpp_home' %}" method="post">
+    {% csrf_token %}
+
+    <hr>
+    <div class="mb-3">
+        <label for="sqft" class="form-label h5">Area (Square feet)</label>
+        <input type="number" class="form-control" id="sqft" min="0" name="sqft" value="1000">
+    </div>
+    <hr>
+
+    <div class="mb-3">
+        <label for="bhk" class="form-label h5">BHK</label>
+        <div id="bhk">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="bhk" value=1>
+                <label class="form-check-label">1</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="bhk" value=2>
+                <label class="form-check-label">2</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="bhk" value=3>
+                <label class="form-check-label">3</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="bhk" value=4>
+                <label class="form-check-label">4</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="bhk" value=5>
+                <label class="form-check-label">5</label>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <div class="mb-3">
+        <label for="bath" class="form-label h5">Bath</label>
+        <div id="bath">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="bath" value=1>
+                <label class="form-check-label">1</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="bath" value=2>
+                <label class="form-check-label">2</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="bath" value=3>
+                <label class="form-check-label">3</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="bath" value=4>
+                <label class="form-check-label">4</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="bath" value=5>
+                <label class="form-check-label">5</label>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupSelect01">Location</label>
+        <select class="form-select" id="inputGroupSelect01" name="location">
+            <!-- <option selected>Choose...</option> -->
+            {% for loc in locations %}
+            <option value='{{loc}}'>{{loc}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <hr>
+
+    <button class="btn btn-outline-success" type="submit">Estimate Price</button>
+    <hr>
+
+    {% if price %}
+    <div class="card">
+        <div class="card-body">
+            <h6>Estimation</h6>
+            <p class="card-text">Location: {{location}}</p>
+            <p class="card-text">Area (sqft): {{sqft}}</p>
+            <p class="card-text">BHK: {{bhk}}</p>
+            <p class="card-text">Bath: {{bath}}</p>
+            <p class="card-text">Estimated Price: {{price}} Lakh</p>
+        </div>
+    </div>
+    <hr>
+    {% endif %}
+
+</form>
+{% endblock %}
