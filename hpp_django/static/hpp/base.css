@@ -1,6 +1,6 @@
 :root {
-    --main-bg-color: #2C3333;
-    --main-text-color: #A5C9CA;
+    --main-bg-color: #222831;
+    --main-text-color: #EEEEEE;
 }
 
 body {
@@ -53,4 +53,15 @@ footer {
 /* for hpp */
 main {
     align-self: center;
+}
+
+body {
+    background-color: var(--main-text-color);
+    color: var(--main-bg-color);
+}
+
+.submitBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
